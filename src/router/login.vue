@@ -18,8 +18,9 @@ let change_display = function(){
 };
 
 let signin= async function() {
-        let response=await fetch("http://127.0.0.1:8000/member/auth",{
+        let response=await fetch("/api/member/auth",{
             method:"PUT",
+            credentials: "include",
             body:JSON.stringify({"email":login_email.value, "password":login_password.value})
         });
         let result=await response.json();
@@ -33,7 +34,7 @@ let signin= async function() {
 
 
 let signup = async function() {
-        let response=await fetch("http://127.0.0.1:8000/member",{
+        let response=await fetch("/api/member",{
             method:"POST",
             body:JSON.stringify({"name":signup_name.value, "email":signup_email.value, "password":signup_password.value})
         });

@@ -1,5 +1,30 @@
 <script setup>
+  import {ref} from "vue";
+  let login_status = ref(true);
+  let username = ref("預設");
 
+  let checkStatus = async function() {
+        let response=await fetch("/api/member/auth",{
+            method:"GET",
+            credentials: "include",
+        });
+        let result=await response.json();
+        console.log(result);
+        if (result.auth){
+            login_status.value=true;
+            username.value = result.name;
+        }else{
+            login_status.value=false;
+        }
+    };
+    checkStatus();
+
+    let logout = async function() {
+        let response=await fetch("/api/logout",{
+            method:"POST"
+        });
+        window.location.reload();
+    }
 </script>
 
 <template>
@@ -7,9 +32,19 @@
         <div class="logo">
                 IG 追蹤者紀錄
         </div>
-        <router-link class="login_btn" to="/login">
-            <button>登入</button>
-        </router-link>
+        <div class="login_status">
+          <div v-if="login_status">
+            {{ username }}
+            <button @click="logout">登出</button>
+          </div>
+          <div v-else>
+            <router-link  to="/login">
+              <button>登入</button>
+            </router-link>
+          </div>
+          
+        </div>
+        
     </header>
 </template>
 
@@ -41,7 +76,7 @@ body {
   padding-top: 60px; /* 與 Header 的高度一致 */
 }
 
-.login_btn {
+.login_status {
   position: absolute;
   right: 20px; /* 距離右邊 20px */
 }
