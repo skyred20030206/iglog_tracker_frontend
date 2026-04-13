@@ -51,7 +51,7 @@
 <style scoped>
 .navbar {
   /* 鎖定位置 */
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -70,11 +70,6 @@
   box-sizing: border-box; /* 避免 padding 撐開寬度 */
 }
 
-/* 給 body 留白，避免內容被 Header 擋住 */
-body {
-  margin: 0;
-  padding-top: 60px; /* 與 Header 的高度一致 */
-}
 
 .login_status {
   position: absolute;

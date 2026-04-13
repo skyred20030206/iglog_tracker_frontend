@@ -9,9 +9,9 @@ export default defineConfig({
   plugins: [vue(), vueDevTools()],
   server: {
     proxy: {
-      // 1. 定義「傳送門」的起點：只要請求路徑開頭是 /api，就啟動代理
+      // 請求路徑開頭是 /api，就啟動代理
       "/api": {
-        // 2. 定義「傳送門」的終點：你的後端 FastAPI 地址
+        // 2. 後端 FastAPI 地址
         target: "http://127.0.0.1:8000",
         // 3. 允許跨域修改 Origin
         changeOrigin: true,
