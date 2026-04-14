@@ -1,7 +1,7 @@
 <script setup>
   import {ref} from "vue";
   let login_status = ref(true);
-  let username = ref("預設");
+  let username = ref("");
 
   let checkStatus = async function() {
         let response=await fetch("/api/member/auth",{

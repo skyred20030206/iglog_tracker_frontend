@@ -26,7 +26,7 @@ let signin= async function() {
         let result=await response.json();
         if(result.login){
             alert("登入成功");
-            router.push("/")
+            router.push("/");
         }else{
             alert("登入失敗");
         }
