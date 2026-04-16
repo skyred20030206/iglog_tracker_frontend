@@ -113,6 +113,7 @@ let save_history =async function(){
   const result = await response.json();
   if (result.ok){
     alert("儲存成功");
+    router.go(0);
   }
   else{
     alert("儲存失敗");

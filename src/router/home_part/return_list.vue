@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from "vue";
 import un_followback from "./return_data/un_followback.vue";
+import exit_fans from "./return_data/exit_fans.vue";
 let display = ref("un_followback");
 
 let change_display = function(status){
@@ -14,10 +15,11 @@ let change_display = function(status){
         <div class="card">
             <nav>
                 <span :class="display==='un_followback'?'current':''" @click="change_display('un_followback')">未回追</span>
-                <span :class="display==='exit_follower'?'current':''" @click="change_display('exit_follower')">退追蹤</span>
+                <span :class="display==='exit_fans'?'current':''" @click="change_display('exit_fans')">退追蹤</span>
             </nav>
             <main>
                 <un_followback  v-if="display==='un_followback'"></un_followback>
+                <exit_fans v-if="display==='exit_fans'"></exit_fans>
             </main>
         </div>
     </div>
