@@ -48,6 +48,13 @@
         <span v-if="isLoading" class="loader"></span>
         {{ isLoading ? '處理中...' : '送出分析' }}
       </button>
+      <br/>
+      <button 
+        class="btn-submit" 
+        @click="save_history"
+      >
+      儲存粉絲名單
+      </button>
     </div>
   </div>
 </template>
@@ -99,6 +106,17 @@ const handleFileChange = (event, type) => {
     followingName.value = file.name;
   }
 };
+
+//儲存history
+let save_history =async function(){
+  const response = await fetch('/api/json/save_history', {method: 'POST'});
+  if (response.ok){
+    alert("儲存成功");
+  }
+  else{
+    alert("儲存失敗");
+  }
+}
 
 /**
  * 送出分析請求

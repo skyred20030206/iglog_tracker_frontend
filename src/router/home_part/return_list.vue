@@ -3,7 +3,7 @@
     let data = ref([]);
     let getData = async function() {
         try {
-            let response = await fetch("/api/json/follower", { method: "GET" });
+            let response = await fetch("/api/json/unfollow_back", { method: "GET" });
             if (response.ok) {
                 let result = await response.json();
                 console.log(result);
