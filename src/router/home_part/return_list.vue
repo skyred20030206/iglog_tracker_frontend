@@ -1,42 +1,46 @@
 <script setup>
-    import {ref} from "vue";
-    let data = ref([]);
-    let getData = async function() {
-        try {
-            let response = await fetch("/api/json/unfollow_back", { method: "GET" });
-            if (response.ok) {
-                let result = await response.json();
-                console.log(result);
-                data.value = result;
-            }
-        } catch (err) {
-            console.log("尚未有資料或無法連線");
-        }
-    }
-    getData();
+import {ref} from "vue";
+import un_followback from "./return_data/un_followback.vue";
+let display = ref("un_followback");
+
+let change_display = function(status){
+    display.value = status;
+}
+
 </script>
 
 <template>
     <div class="analysis-container">
         <div class="card">
-            <div class="list-item" v-for="user in data">
-                <a :href="'https://www.instagram.com/'+user[0]">{{ user[0] }}</a>
-            </div>
+            <nav>
+                <span :class="display==='un_followback'?'current':''" @click="change_display('un_followback')">未回追</span>
+                <span :class="display==='exit_follower'?'current':''" @click="change_display('exit_follower')">退追蹤</span>
+            </nav>
+            <main>
+                <un_followback  v-if="display==='un_followback'"></un_followback>
+            </main>
         </div>
     </div>
-    
 </template>
 
-<style>
+<style scoped>
 .analysis-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   min-height: 400px;
   padding: 20px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-.card { width: 400px; background: #fff; border: 1px solid #e0e0e0; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px;}
-.list-item { padding: 8px 10px; border-bottom: 1px solid #eee; color: #444; }
-.list-item:last-child { border-bottom: none; }
+.card {
+ width: 400px;
+ background: #fff;
+ border: 1px solid #e0e0e0;
+ padding: 25px; border-radius: 12px;
+ box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+ margin-bottom:  20px;}
+
+ .nav{font-size: 20px;}
+ nav>span{margin-right: 10px;}
+ nav>span.current{font-weight: bold;}
+
 </style>

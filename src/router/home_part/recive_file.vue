@@ -110,7 +110,8 @@ const handleFileChange = (event, type) => {
 //儲存history
 let save_history =async function(){
   const response = await fetch('/api/json/save_history', {method: 'POST'});
-  if (response.ok){
+  const result = await response.json();
+  if (result.ok){
     alert("儲存成功");
   }
   else{
