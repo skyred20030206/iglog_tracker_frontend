@@ -143,10 +143,9 @@ const submitAnalysis = async () => {
       },
       method: 'POST',
       body: JSON.stringify({ 
-
-                    follower: followersData,
-                    following: followingData
-                })
+        follower: followersData,
+        following: followingData
+        })
  
     });
 
