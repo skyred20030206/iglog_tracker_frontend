@@ -2,9 +2,9 @@
     import {ref,computed} from "vue";
     let un_followback_data = ref([]);
     let ignore_list = ref([]);
-    let getData = async function() {
+    let get_un_followback_Data = async function() {
         try {
-            let response = await fetch("/api/json/unfollow_back", { method: "GET" });
+            let response = await fetch("/api/json/ignore_list", { method: "GET" });
             if (response.ok) {
                 let result = await response.json();
                 //console.log(result);
@@ -14,7 +14,9 @@
             console.log("尚未有資料或無法連線");
         }
     }
-    getData();
+    get_un_followback_Data();
+    
+
     
     const ignore_data = computed(() => {
         return un_followback_data.value.filter(user => 
@@ -22,7 +24,7 @@
     });
 
     let save_ignore =async function(){
-        const response = await fetch('/api/json/save_ignore', {
+        const response = await fetch('/api/json/ignore_list/save', {
             headers: {
                 'Content-Type': 'application/json'
                 },
@@ -42,11 +44,11 @@
 
 <template>
     <div class="analysis-container">
-        <div class="card">
+        <div class="board">
             <button class="btn-submit" @click="save_ignore">儲存忽略名單</button>
             <div class="list-item" v-for="user in un_followback_data">
                 <a :href="'https://www.instagram.com/'+user[0]">{{ user[0] }}</a>
-                <input type="checkbox" :value="user[0]" v-model="ignore_list" />
+                <input class="check" type="checkbox" :value="user[0]" v-model="ignore_list" />
             </div>
             <div>{{ ignore_data }}</div>
         </div>
@@ -55,8 +57,12 @@
 </template>
 
 <style>
-.list-item { padding: 8px 10px; border-bottom: 1px solid #eee; color: #444; }
+.list-item { 
+    display: flex;
+    justify-content:space-between;
+    padding: 8px 10px; border-bottom: 1px solid #eee; color: #444; }
 .list-item:last-child { border-bottom: none; }
+.board {width: 500px;}
 
 .btn-submit {
   width: 100%;

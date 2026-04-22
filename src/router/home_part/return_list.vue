@@ -33,21 +33,35 @@ let change_display = function(status){
 .analysis-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   min-height: 400px;
   padding: 20px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 .card {
- width: 400px;
+ width: 100%;
+ max-width: 500px;
  background: #fff;
  border: 1px solid #e0e0e0;
- padding: 25px; 
+ padding: 2.5rem; 
  border-radius: 12px;
- box-shadow: 0 4px 6px rgba(0,0,0,0.1);
- margin-bottom:  20px;}
+ box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+ margin-bottom:  20px;
+ text-align: left;}
 
- .nav{font-size: 20px;}
- nav>span{margin-right: 10px;}
+ nav{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 20px;
+}
+ nav>span{
+    flex:none;
+    text-align: center;
+    
+    justify-content: center;}
  nav>span.current{font-weight: bold;}
+
+ main{justify-content: center;}
 
 </style>

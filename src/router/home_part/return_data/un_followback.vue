@@ -18,7 +18,7 @@
 
 <template>
     <div class="analysis-container">
-        <div class="card">
+        <div class="board">
             <div class="list-item" v-for="user in data">
                 <a :href="'https://www.instagram.com/'+user[0]">{{ user[0] }}</a>
             </div>
@@ -30,4 +30,5 @@
 <style>
 .list-item { padding: 8px 10px; border-bottom: 1px solid #eee; color: #444; }
 .list-item:last-child { border-bottom: none; }
+.board {width: 500px;}
 </style>
