@@ -4,7 +4,7 @@
     let ignore_list = ref([]);
     let get_un_followback_Data = async function() {
         try {
-            let response = await fetch("/api/json/ignore_list", { method: "GET" });
+            let response = await fetch("/api/json/unfollow_back/all", { method: "GET" });
             if (response.ok) {
                 let result = await response.json();
                 //console.log(result);
@@ -16,8 +16,20 @@
     }
     get_un_followback_Data();
     
+    let get_ignore_Data = async function() {
+        try {
+            let response = await fetch("/api/json/ignore_list", { method: "GET" });
+            if (response.ok) {
+                let result = await response.json();
+                console.log(result);
+                ignore_list.value = result;
+            }
+        } catch (err) {
+            console.log("尚未有資料或無法連線");
+        }
+    }
+    get_ignore_Data();
 
-    
     const ignore_data = computed(() => {
         return un_followback_data.value.filter(user => 
             ignore_list.value.includes(user[0]));
