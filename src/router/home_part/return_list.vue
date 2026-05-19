@@ -34,7 +34,6 @@ let change_display = function(status){
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 400px;
   padding: 20px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }

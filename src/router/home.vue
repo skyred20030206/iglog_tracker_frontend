@@ -11,4 +11,3 @@ import recive_file from "./home_part/recive_file.vue";
 
 </template>
 
-

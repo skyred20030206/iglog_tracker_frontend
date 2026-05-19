@@ -62,7 +62,6 @@
                 <a :href="'https://www.instagram.com/'+user[0]">{{ user[0] }}</a>
                 <input class="check" type="checkbox" :value="user[0]" v-model="ignore_list" />
             </div>
-            <div>{{ ignore_data }}</div>
         </div>
     </div>
     

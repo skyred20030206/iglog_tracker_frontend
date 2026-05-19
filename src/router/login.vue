@@ -51,22 +51,71 @@ let signup = async function() {
 </script>
 
 <template>
-
-    <div v-if="display_login" class="card">
-        <h2>登入</h2>
-        email
-        <input type="text" id="signin_email" v-model="login_email"/>
-        password
-        <input type="text" id="signin_password" v-model="login_password"/>
-        <button @click="signin">登入</button>
-        <button @click="change_display">註冊帳號</button>
+    <div class="analysis-container">
+        <div v-if="display_login" class="card">
+            <h2>登入</h2>
+            電子信箱<br />
+            <input type="text" id="signin_email" v-model="login_email"/><br />
+            密碼<br />
+            <input class="marginBTM" type="text" id="signin_password" v-model="login_password"/><br />
+            <button class="btn-submit" @click="signin">登入</button><br />
+            <button class="btn-submit" @click="change_display">註冊帳號</button>
+        </div>
+        <div v-else class="card">
+            <h2>註冊</h2>
+            使用者名稱<br />
+            <input type="text" id="signup_name" v-model="signup_name"/><br />
+            電子信箱<br />
+            <input type="text" id="signup_email" v-model="signup_email"/><br />
+            密碼<br />
+            <input class="marginBTM" type="text" id="signup_password" v-model="signup_password"/><br />
+            <button class="btn-submit" @click="signup">註冊</button><br />
+            <button class="btn-submit" @click="change_display">返回登入</button>
+        </div>
     </div>
-    <div v-else class="card">
-        <h2>註冊</h2>
-        name<input type="text" id="signup_name" v-model="signup_name"/></br>
-        email<input type="text" id="signup_email" v-model="signup_email"/></br>
-        password<input type="text" id="signup_password" v-model="signup_password"/></br>
-        <button @click="signup">註冊</button>
-        <button @click="change_display">返回登入</button>
-    </div>
+        
 </template>
+
+<style scoped>
+.marginBTM{
+    margin-bottom: 20px;
+}
+
+.analysis-container {
+    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 卡片樣式 */
+.card {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+</style>
