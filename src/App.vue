@@ -3,7 +3,7 @@ import {ref,onMounted} from "vue";
 
 let a=ref(null);
 onMounted(async function(){
-  let response = await fetch("http://127.0.0.1:8000/test");
+  let response = await fetch("/api/test");
   response= await response.json();
   console.log(response);
   a.value=response;
