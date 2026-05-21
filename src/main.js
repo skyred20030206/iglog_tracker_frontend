@@ -15,6 +15,9 @@ if (PRODUCTION_API_URL) {
 
   window.fetch = async (url, options) => {
     // 如果請求網址是字串，而且是以 /api 開頭
+
+    options.credentials = "include";
+
     if (typeof url === "string" && url.startsWith("/api")) {
       // 魔法發生的地方：自動把 /api 換成 Render 的後端網址
       // 範例：/api/member/auth -> https://xxx.onrender.com/member/auth
