@@ -15,7 +15,9 @@ if (PRODUCTION_API_URL) {
 
   window.fetch = async (url, options) => {
     // 如果請求網址是字串，而且是以 /api 開頭
-
+    if (!options) {
+      options = {};
+    }
     options.credentials = "include";
 
     if (typeof url === "string" && url.startsWith("/api")) {
